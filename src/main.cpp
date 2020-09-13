@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
         usleep(10000);
 
         if (line[i] == line[9]) {
-          i = 0 ;
+          i = -1 ;
         }
 
         i++;
