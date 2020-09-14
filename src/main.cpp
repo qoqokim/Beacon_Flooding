@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <unistd.h> // unsleep
 #include <fstream>  // 파일 입출력
@@ -24,7 +25,12 @@ int main(int argc, char *argv[]) {
     string line[10];
     int i=0;
 
-    ifstream ssid(ssidlist);
+    ifstream ssid(ssidlist);  // ifstream 의 생성자 ssid를 통해 파일열기
+
+    if (!ssid.is_open()){
+        cout << "file open error";
+        return -1;
+    }
     for (int i=0;i<10;i++) {
         getline(ssid,line[i]);
     }
@@ -53,10 +59,9 @@ int main(int argc, char *argv[]) {
         usleep(10000);
 
         if (line[i] == line[9]) {
-          i = 0 ;
+          i = -1 ;
         }
 
         i++;
     }
-
 }
